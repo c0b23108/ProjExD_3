@@ -97,7 +97,7 @@ class Bomb:
         self.img = pg.Surface((2*rad, 2*rad))
         pg.draw.circle(self.img, color, (rad, rad), rad)
         self.img.set_colorkey((0, 0, 0))
-        self.rct = self.img.get_rect()
+        self.rct = self.img.get_rect()  #爆弾について
         self.rct.center = random.randint(0, WIDTH), random.randint(0, HEIGHT)
         self.vx, self.vy = +5, +5
 
