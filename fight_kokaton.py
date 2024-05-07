@@ -123,7 +123,7 @@ class Beam:
         if check_bound(self.rct) == (True, True):
             self.rct.move_ip(self.vx, self.vy)
             screen.blit(self.img, self.rct)
-class Score:
+class Score:  #スコア表示
     def _init_(self):
         self.fonto = pg.font.Sysfont("hgp創英角ﾎﾟｯﾌﾟ体", 30)
         self. score = 0
