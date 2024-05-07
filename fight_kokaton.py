@@ -18,7 +18,7 @@ def check_bound(obj_rct: pg.Rect) -> tuple[bool, bool]:
     """
     yoko, tate = True, True
     if obj_rct.right < 0 or WIDTH < obj_rct.left:
-        yoko = False
+        yoko = False    #座標に関する処理
     if obj_rct.bottom < 0 or HEIGHT < obj_rct.top:
         tate = False
     return yoko, tate
