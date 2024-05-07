@@ -104,7 +104,7 @@ class Bomb:
         if not tate:
             self.vy *= -1
         self.rct.move_ip(self.vx, self.vy)
-        screen.blit(self.img, self.rct)
+        screen.blit(self.img, self.rct) 
 class Beam:
     def __init__(self, bird: Bird):
         """
@@ -123,10 +123,23 @@ class Beam:
         if check_bound(self.rct) == (True, True):
             self.rct.move_ip(self.vx, self.vy)
             screen.blit(self.img, self.rct)
+class Score:
+    def _init_(self):
+        self.fonto = pg.font.Sysfont("hgp創英角ﾎﾟｯﾌﾟ体", 30)
+        self. score = 0
+        self.img = self.font.render(f"スコア:{self.score}",0,(0,0,255))
+        self.rct = self.img.get_rect()
+        self.rct.center = 100,HEIGHT-50
+    def update(self,screen):
+        self.img = self.font.render(f"スコア:{self.score}",0,(0,0,255))  
+        screen.blit(self.img,True,[100,HEIGHT-50])
+        pg.display.update() 
+
+
 def main():
     pg.display.set_caption("たたかえ！こうかとん")
     screen = pg.display.set_mode((WIDTH, HEIGHT))    
-    bg_img = pg.image.load("fig/pg_bg.jpg")
+    bg_img = pg.image.load("fig/pg_bg.jpg") 
     bird = Bird((900, 400))
     bomb = Bomb((255, 0, 0), 10)
     # bomb = Bomb((255, 0, 0), 10)
@@ -154,6 +167,7 @@ def main():
             if beam.rct.colliderect(bomb.rct):  # ビームと爆弾が衝突したら
                 beam = None
                 bomb = None
+                screen += 1
                 bird.change_img(6, screen)
                 pg.display.update()
         # if not (beam is None or bomb is None):
